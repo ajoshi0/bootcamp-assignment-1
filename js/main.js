@@ -92,7 +92,7 @@ function clearFilters ()
 	$("#s_type").val("All").change();
 	$("#s_brand").val("All").change();
 	$("#s_sort").val("price_asc").change();
-	slider.trigger("setvals", { values: [7, 90] } );
+	slider.trigger("setvals", { values: [26, 53] } );
 
 	listProducts = f;
 	listProducts();
