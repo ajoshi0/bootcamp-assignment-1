@@ -260,7 +260,7 @@ body {
 }
 
 .filter .select {
-	display: inline-block; width: 200px;
+	display: inline-block; width: 150px;
 }
 
 .filter .select > span {
@@ -268,7 +268,7 @@ body {
 }
 
 .filter .select .bootstrap-select button {
-	width: 82%; padding: 8px 0px; font-family: "Custom";
+	width: 60%; padding: 8px 0px; font-family: "Custom";
 }
 
 
