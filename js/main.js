@@ -131,7 +131,7 @@ $(function()
 
 	$(".selectpicker").selectpicker();
 
-	slider = $("#size-slider").slider({ animate: false, range: true, min: 7, max: 90, values: [ 26, 40 ],
+	slider = $("#size-slider").slider({ animate: false, range: true, min: 7, max: 73, values: [ 26, 40 ],
 		slide: function (event, ui) {
 
 			if (ui.values[0] > ui.values[1])
@@ -152,7 +152,7 @@ $(function()
 		$(this).slider("option", "slide").call($(this), null, p);
 	});
 
-	slider.trigger("setvals", { values: [26, 73, -1] } );
+	slider.trigger("setvals", { values: [26, 53, -1] } );
 	populateSets();
 	listProducts();
 });
