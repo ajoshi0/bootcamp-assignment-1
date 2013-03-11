@@ -299,7 +299,7 @@ body {
 }
 
 .results > .list > div {
-	display: inline-block; vertical-align: top; margin: 10px 25px; text-align: left;
+	display: inline-block; vertical-align: top; margin: 10px 24px; text-align: left;
 }
 
 .results > .list > div > img {
