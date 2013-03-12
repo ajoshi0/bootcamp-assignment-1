@@ -85,11 +85,11 @@ var listProducts = function()
     switch (f_sort)
     {
         case "price_asc":
-            sfunc = function(a,b) { return parseFloat(a.listPrice) - parseFloat(b.listPrice); };
+            sfunc = function(a,b) { return parseFloat(a.price) - parseFloat(b.price); };
             break;
 
         case "price_desc":
-            sfunc = function(a,b) { return parseFloat(b.listPrice) - parseFloat(a.listPrice); };
+            sfunc = function(a,b) { return parseFloat(b.price) - parseFloat(a.price); };
             break;
 
         case "ranking":
@@ -122,7 +122,8 @@ var listProducts = function()
         if (j.length > 28) j = j.substr(0, 28) + "...";
         $("<span>").text(j).appendTo(div);
 
-        $("<em>").html(""+parseInt(k.listPrice)+"<span>"+ (k.listPrice - parseInt(k.listPrice)).toFixed(2).substr(1) +"</span>").appendTo(div);
+        $("<em>").html(""+parseInt(k.price)+"<span>"+ (k.price - parseInt(k.price)).toFixed(2).substr(1) +"</span>").appendTo(div);
+
         $("<i>").append($("<i>").css("width", ((k.rating/5)*100).toFixed(2) + "%")).appendTo(div);
 
         ui.append(div);
