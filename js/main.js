@@ -130,7 +130,7 @@ var listProducts = function()
         n++;
     }
 
-    ui.find("img").lazyload({ effect:"fadeIn", threshold:100 });
+    ui.find("img").lazyload({ effect:"fadeIn", threshold:200 });
     $(window).trigger("scroll");
 
     $("#matches-label").text (n + " Matches");
