@@ -1,13 +1,13 @@
 /* Author: Arunesh Joshi */
 
 @font-face {
-	src: url(CartoGothicStd-Book.otf);
+	src: url(MyriadPro-Light.otf);
 	font-family: "Custom";
 	font-weight: normal;
 }
 
 @font-face {
-	src: url(CartoGothicStd-Bold.otf);
+	src: url(MyriadPro-Regular.otf);
 	font-family: "Custom";
 	font-weight: bold;
 }

@@ -2,6 +2,7 @@
 (1) "ui-slider-handle" class which selects the slider handles
 (2) "ui-slider" which describes the slider background (gray)
 (3) "ui-slider-range" which describes the selected area in the slider.
+(4) "ui-slider-handle:after" which describe the tooltip and value of slider.
 
 - LazyLoad plugin has been implemented by loading the "js/jquery.lazyload.min.js" file. The actual usage is like to call all images in the results container like this: ui.find("img").lazyload({effect:"fadeIn"}); Which will cause all images in the container to be loaded whenever they are in the visible area of the window.
 
