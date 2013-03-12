@@ -49,7 +49,7 @@ body {
 }
 
 .header .links a:after {
-	position: absolute; right: 0px; top: 4px; width: 2px; height: 100%; content: "";
+	position: absolute; right: 0px; top: 4px; width: 2px; height: 80%; content: "";
 	background: url(../images/bg-vert.png);
 }
 
