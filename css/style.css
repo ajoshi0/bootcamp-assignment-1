@@ -35,7 +35,7 @@ body {
 }
 
 .header .logo > div {
-	display: inline-block; width: 194px; margin-right: 16px;
+	display: inline-block; width: 194px;
 }
 
 /* ~ */
@@ -76,6 +76,7 @@ body {
 	display: inline-block;
 	background: url(../images/bg-textbox.png) 0px -42px repeat-x;
 	padding: 0px;
+	margin-left: 16px;
 }
 
 .ui-search-box:before {
@@ -303,11 +304,12 @@ body {
 }
 
 .results > .list > div > img {
+	cursor: pointer;
 }
 
 .results > .list > div > b {
 	display: block; color: #0e77bd; font-size: 1.5em; margin-top: 12px;
-	width: 180px; line-height: 1.4em;
+	width: 180px; line-height: 1.4em; cursor: pointer;
 }
 
 .results > .list > div > span {

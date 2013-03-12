@@ -2,22 +2,12 @@
 
 var dataset = null;
 var range = [0, 0];
-var range_min, range_max;
+var range_min, range_max, range_mid;
 var slider;
 
-function populateSets ()
+function calculateRange ()
 {
-    var set, i, s;
-
-    set = { };
-    for (i in dataset) set[dataset[i].type] = true;
-    s = $("#s_type").html(""); s.append($("<option>").val("All").text("All Types"));
-    for (i in set) s.append($("<option>").val(i).text(i));
-
-    set = { };
-    for (i in dataset) set[dataset[i].brand] = true;
-    s = $("#s_brand").html(""); s.append($("<option>").val("All").text("All Brands"));
-    for (i in set) s.append($("<option>").val(i).text(i));
+    var i;
 
     range_min = null;
     range_max = null;
@@ -26,11 +16,62 @@ function populateSets ()
         range_min = range_min === null ? dataset[i].size : Math.min (dataset[i].size, range_min);
         range_max = range_max === null ? dataset[i].size : Math.max (dataset[i].size, range_max);
     }
+	
+	range_mid = parseInt((range_max + range_min) / 2);
 }
 
 var dummyFunction = function()
 {
 };
+
+function filterTypes ()
+{
+	var data, set, i, s, p, q;
+
+    data = [];
+	for (i in dataset)
+	{
+		if (!(range[0] <= parseInt(dataset[i].size) && parseInt(dataset[i].size) <= range[1]))
+			continue;
+
+		data.push(dataset[i]);
+	}
+
+	set = { };
+	for (i in data) set[data[i].type] = true;
+	q = $("#s_type");
+	p = q.val();
+	s = q.html(""); s.append($("<option>").val("All").text("All Types"));
+	for (i in set) s.append($("<option>").val(i).text(i));
+	q.val(p); if (q.val() != p) q.val("All"); q.change();
+}
+
+function filterBrands ()
+{
+	var data, set, i, s, p, q;
+
+	s = $("#s_type").val();
+
+    data = [];
+	for (i in dataset)
+	{
+		if (!(range[0] <= parseInt(dataset[i].size) && parseInt(dataset[i].size) <= range[1]))
+			continue;
+
+		if (s != "All" && dataset[i].type != s)
+			continue;
+
+		data.push(dataset[i]);
+	}
+
+    set = { };
+    for (i in data) set[data[i].brand] = true;
+	q = $("#s_brand");
+	p = q.val();
+	s = q.html(""); s.append($("<option>").val("All").text("All Brands"));
+	for (i in set) s.append($("<option>").val(i).text(i));
+	q.val(p); if (q.val() != p) q.val("All"); q.change();
+}
 
 var listProducts = function()
 {
@@ -74,8 +115,8 @@ var listProducts = function()
 
         var div = $("<div>");
 
-        $("<img>").attr("src", "images/blank.png").attr("data-original", k.image).appendTo(div);
-        $("<b>").text(k.name.substr(0, 1+k.name.indexOf("\""))).appendTo(div);
+        $("<img>").attr("src", "images/blank.png").attr("data-original", k.image).attr("onclick", "window.location='"+k.url+"';").appendTo(div);
+        $("<b>").text(k.name.substr(0, 1+k.name.indexOf("\""))).attr("onclick", "window.location='"+k.url+"';").appendTo(div);
 
         var j = k.name.substr(2+k.name.indexOf("\""));
         if (j.length > 28) j = j.substr(0, 28) + "...";
@@ -102,7 +143,7 @@ function clearFilters ()
     $("#s_type").val("All").change();
     $("#s_brand").val("All").change();
     $("#s_sort").val("price_asc").change();
-    slider.trigger("setvals", { values: [37, 55] } );
+    slider.trigger("setvals", { values: [range_mid-10, range_mid+10] } );
 
     listProducts = f;
     listProducts();
@@ -139,11 +180,11 @@ $(function()
 {
     $.ajax ({ type: "get", async: false, url: "res/data.json", dataType: "json", success: function(result) { dataset = result; } });
 
-    populateSets();
+    calculateRange();
 
-    $(".selectpicker").selectpicker();
+	$(".selectpicker").selectpicker();
 
-    slider = $("#size-slider").slider({ animate: false, range: true, min: range_min, max: range_max, values: [37, 55],
+    slider = $("#size-slider").slider({ animate: false, range: true, min: range_min, max: range_max, values: [0, 0],
         slide: function (event, ui) {
 
             if (ui.values[0] > ui.values[1])
@@ -155,8 +196,7 @@ $(function()
             range[0] = ui.values[0];
             range[1] = ui.values[1];
 
-            if (ui.values.length == 2 || (ui.values.length == 3 && ui.values[2] != -1))
-                listProducts();
+			filterTypes();
         } });
 
     slider.bind("setvals", function (e, p) {
@@ -164,6 +204,5 @@ $(function()
         $(this).slider("option", "slide").call($(this), null, p);
     });
 
-    slider.trigger("setvals", { values: [37, 55, -1] } );
-    listProducts();
+	slider.trigger("setvals", { values: [range_mid-10, range_mid+10] } );
 });

@@ -34,47 +34,69 @@
 		<!-- Header -->
 		<div class="navbar-fixed-top">
 		<div class="row-fluid header">
-			<div class="span6">
-				<div class="logo">
-					<div><a href="http://www.walmart.com/"><img src="images/logo.png"/></a></div>
+
+			<div class="max967">
+				<div class="span9">
+					<div class="logo">
+						<div><a href="http://www.walmart.com/"><img src="images/logo.png"/></a></div>
+					</div>
+
+					<div class="ui-search-box">
+						<input type="text" id="searchbox" placeholder="Search" onkeyup="if(event.keyCode==13) search($(this));"/>
+					</div>
 				</div>
 
-				<div class="ui-search-box">
-					<input type="text" id="searchbox" placeholder="Search" onkeyup="if(event.keyCode==13) search($(this));"/>
-				</div>
-			</div>
+				<div class="span3">
+					<div class="menu">
+					<div class="container-fluid">
+						<span class="dropdown">
+							<span class="btn btn-navbar dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-home"></i>
+							</span>
 
-			<div class="span6 menu">
-				<div class="max967 container-fluid">
-					<span class="dropdown">
-						<span class="btn btn-navbar dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-home"></i>
+							<ul class="dropdown-menu pull-right" id="nav" style="text-align: left;">
+								<li><a href="https://www.walmart.com/giftregistry/gr_linked.do?registryType=5"><b>Create</b> a new wishlist</a></li>
+								<li><a href="https://www.walmart.com/cservice/ya_index.do"><b>Sign In</b> to your account</a></li>
+								<li><a href="https://www.walmart.com/cart2/cart.do"><b>0 Items</b> in your cart</a></li>
+							</ul>
 						</span>
-
-						<ul class="dropdown-menu pull-right" id="nav" style="text-align: left;">
-							<li><a href="https://www.walmart.com/giftregistry/gr_linked.do?registryType=5"><b>Create</b> a new wishlist</a></li>
-							<li><a href="https://www.walmart.com/cservice/ya_index.do"><b>Sign In</b> to your account</a></li>
-							<li><a href="https://www.walmart.com/cart2/cart.do"><b>0 Items</b> in your cart</a></li>
-						</ul>
-					</span>
-				</div>
-				<div class="min968 links">
-					<a href="https://www.walmart.com/giftregistry/gr_linked.do?registryType=5">
-						<img src="images/icon-00.png"/><b>Create</b>
-						<span>a new wishlist</span>
-					</a>
-
-					<a href="https://www.walmart.com/cservice/ya_index.do">
-						<img src="images/icon-01.png"/><b>Sign In</b>
-						<span>to your account</span>
-					</a>
-
-					<a class="last" href="https://www.walmart.com/cart2/cart.do">
-						<img src="images/icon-02.png"/><b>0 Items</b>
-						<span>in your cart</span>
-					</a>
+					</div>
+					</div>
 				</div>
 			</div>
+
+			<div class="min968">
+				<div class="span7">
+					<div class="logo">
+						<div><a href="http://www.walmart.com/"><img src="images/logo.png"/></a></div>
+					</div>
+
+					<div class="ui-search-box">
+						<input type="text" id="searchbox" placeholder="Search" onkeyup="if(event.keyCode==13) search($(this));"/>
+					</div>
+				</div>
+
+				<div class="span5 menu">
+					<div class="links">
+						<a href="https://www.walmart.com/giftregistry/gr_linked.do?registryType=5">
+							<img src="images/icon-00.png"/><b>Create</b>
+							<span>a new wishlist</span>
+						</a>
+
+						<a href="https://www.walmart.com/cservice/ya_index.do">
+							<img src="images/icon-01.png"/><b>Sign In</b>
+							<span>to your account</span>
+						</a>
+
+						<a class="last" href="https://www.walmart.com/cart2/cart.do">
+							<img src="images/icon-02.png"/><b>0 Items</b>
+							<span>in your cart</span>
+						</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
 		</div>
 		</div>
 
@@ -126,19 +148,15 @@
 					<div class="span6">
 						<div class="select">
 							<span>Type</span>
-							<select class="selectpicker" id="s_type" onchange="listProducts();">
-								<option>LCD</option>
-								<option>Plasma</option>
-								<option>LED</option>
+							<select class="selectpicker" id="s_type" onchange="filterBrands();">
+								<option>All</option>
 							</select>
 						</div>
 
 						<div class="select">
 							<span>Brand</span>
 							<select class="selectpicker" id="s_brand" onchange="listProducts();">
-								<option>Samsung</option>
-								<option>Sony</option>
-								<option>LG</option>
+								<option>All</option>
 							</select>
 						</div>
 
